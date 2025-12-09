@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Academic Portfolio – Shubham Kumar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ================== PURE CSS ================== -->
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --accent-strong: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .top-nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+    }
+
+    .nav-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav-right a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+    }
+
+    .nav-right a:hover,
+    .nav-right a.active-nav {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* Main page container */
+    .page {
+      max-width: 1120px;
+      margin: 30px auto 50px;
+      padding: 0 16px 40px;
+    }
+
+    .page-inner {
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.1), transparent 60%),
+                  radial-gradient(circle at 100% 100%, rgba(94, 234, 212, 0.12), transparent 60%),
+                  #020617;
+      border-radius: 32px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      padding: 32px 22px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 900px) {
+      .page-inner {
+        padding: 38px 36px 40px;
+      }
+    }
+
+    /* Generic section styling */
+    section {
+      margin-bottom: 32px;
+      padding: 20px 18px 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      backdrop-filter: blur(16px);
+    }
+
+    section h2 {
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* ========== COVER PAGE ========== */
+    #cover {
+      display: grid;
+      grid-template-columns: 1.2fr 1.4fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 780px) {
+      #cover {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cover-left {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cover-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      border: 3px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at 30% 10%, #1f2937, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .cover-photo::before {
+      content: "Upload Your Photo";
+      position: absolute;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 12px;
+    }
+
+    .cover-tagline-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cover-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    .cover-name {
+      font-size: clamp(26px, 3vw, 30px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cover-program {
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cover-meta-line {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cover-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cover-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .cover-heading {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 600;
+    }
+
+    .cover-subtext {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cover-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .cover-tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cover-bottom-line {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .cover-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-primary {
+      border: none;
+      outline: none;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020617;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: transparent;
+      padding: 8px 14px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      border-style: solid;
+      color: var(--text);
+    }
+
+    /* ========== TABLE OF CONTENTS ========== */
+    #toc-section {
+      margin-top: 22px;
+    }
+
+    .toc-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 16px 16px 10px;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .toc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .toc-title {
+      font-size: 15px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      text-decoration: none;
+      background: rgba(2, 6, 23, 0.96);
+    }
+
+    .toc-list a span.index {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .toc-list a:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .toc-list a.toc-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    /* ========== INTRO + LEARNING PHILOSOPHY ========== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .small-card {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 10px 12px;
+      background: rgba(2, 6, 23, 0.96);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .small-card-title {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    /* ========== RESUME / CV ========== */
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 820px) {
+      .resume-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .resume-block-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 4px;
+      margin-top: 10px;
+    }
+
+    .resume-item {
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.7);
+    }
+
+    .resume-item:last-child {
+      border-bottom: none;
+    }
+
+    .resume-item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .resume-role {
+      font-weight: 500;
+    }
+
+    .resume-meta {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* ========== PROJECTS ========== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.05fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 12px 12px 10px;
+      background: rgba(2, 6, 23, 0.98);
+      font-size: 14px;
+    }
+
+    .project-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .project-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .project-subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .project-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .project-pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-visual {
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ========== ADVANCED SKILLS ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      border-radius: 15px;
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      padding: 10px 11px 8px;
+      background: rgba(2, 6, 23, 0.98);
+      font-size: 13px;
+    }
+
+    .skill-type {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .skill-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .skill-detail {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    pre.code-snippet {
+      font-family: "Consolas", "Fira Code", monospace;
+      font-size: 12px;
+      padding: 7px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      background: #020617;
+      overflow-x: auto;
+      margin-top: 4px;
+    }
+
+    /* ========== SWOT / CONCLUSION / TESTIMONIALS ========== */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .swot-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .swot-card {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 9px 10px;
+      background: rgba(2, 6, 23, 0.98);
+      font-size: 13px;
+    }
+
+    .swot-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .testimonial-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 10px 11px 8px;
+      background: rgba(2, 6, 23, 0.98);
+      font-size: 13px;
+    }
+
+    .testimonial-name {
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    blockquote {
+      margin: 0;
+      border-left: 2px solid rgba(148, 163, 184, 0.6);
+      padding-left: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Utility spacing */
+    .mb-4 { margin-bottom: 12px; }
+    .mb-2 { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- ================== TOP NAVBAR ================== -->
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <div class="nav-left">
+        <span class="nav-dot"></span>
+        <span>Academic Portfolio</span>
+      </div>
+      <nav class="nav-right">
+        <a href="#intro" class="nav-link">Intro</a>
+        <a href="#resume" class="nav-link">Resume</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#collab" class="nav-link">Leadership</a>
+        <a href="#ethics" class="nav-link">Ethics</a>
+        <a href="#future" class="nav-link">Future</a>
+        <a href="#conclusion" class="nav-link">Conclusion</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================== MAIN PAGE ================== -->
+  <main class="page">
+    <div class="page-inner">
+
+      <!-- ========== COVER PAGE (1 MARK) ========== -->
+      <section id="cover">
+        <div class="cover-left">
+          <div class="cover-photo">
+            <!-- Replace with your image:
+            <img src="your-photo.jpg" alt="Shubham Kumar" style="width:100%;height:100%;object-fit:cover;">
+            -->
+          </div>
+
+          <div class="cover-tagline-pill">
+            <span class="cover-dot"></span>
+            <span>Digital Academic Portfolio</span>
+          </div>
+
+          <div class="cover-name">Shubham Kumar</div>
+          <div class="cover-program">
+            B.Tech – Computer Science & Engineering
+          </div>
+          <p class="cover-meta-line">
+            [Your Institute Name] • Second-Year Undergraduate Student
+          </p>
+          <p class="cover-meta-line">
+            Submission Date: <span id="submissionDate">[DD Month YYYY]</span>
+          </p>
+        </div>
+
+        <div class="cover-right">
+          <div class="cover-title">Learning Tagline</div>
+          <div class="cover-heading">
+            Learning at the intersection of logic, design, and real-world impact.
+          </div>
+          <p class="cover-subtext">
+            This portfolio captures my journey as a Computer Science student who enjoys solving problems,
+            building systems, and connecting ideas across disciplines like mathematics, design, and technology.
+          </p>
+
+          <div class="cover-tags">
+            <span class="cover-tag">Computer Science</span>
+            <span class="cover-tag">Web Development</span>
+            <span class="cover-tag">AI & ML</span>
+            <span class="cover-tag">Interdisciplinary Learning</span>
+          </div>
+
+          <p class="cover-bottom-line">
+            Academic Program: B.Tech CSE • Institution: [Your Institute Name] • Guide/Faculty: [Name If Needed]
+          </p>
+
+          <div class="cover-actions">
+            <button class="btn-primary" onclick="window.print()">Export / Print (PDF)</button>
+            <button class="btn-outline" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+              View Portfolio
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== TABLE OF CONTENTS (1 MARK) ========== -->
+      <section id="toc-section">
+        <div class="toc-card">
+          <div class="toc-header">
+            <div class="toc-title">Contents</div>
+            <div class="toc-note">Click to jump to section</div>
+          </div>
+          <ul class="toc-list">
+            <li><a href="#intro"><span class="index">1</span> Introduction & Learning Philosophy</a></li>
+            <li><a href="#resume"><span class="index">2</span> Resume / CV</a></li>
+            <li><a href="#projects"><span class="index">3</span> Interdisciplinary Projects & Research</a></li>
+            <li><a href="#skills"><span class="index">4</span> Advanced Skill Development & Mastery</a></li>
+            <li><a href="#collab"><span class="index">5</span> Collaborative & Leadership Experiences</a></li>
+            <li><a href="#ethics"><span class="index">6</span> Global Awareness & Ethical Considerations</a></li>
+            <li><a href="#future"><span class="index">7</span> Future Aspirations & Professional Development</a></li>
+            <li><a href="#conclusion"><span class="index">8</span> Conclusion, Self-Assessment & SWOT</a></li>
+            <li><a href="#testimonials"><span class="index">9</span> Testimonials</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ========== INTRODUCTION & LEARNING PHILOSOPHY (2 MARKS) ========== -->
+      <section id="intro">
+        <h2>Introduction & Learning Philosophy</h2>
+        <p class="section-subtitle">
+          A brief overview of who I am, how I learn, and the values that guide my academic journey.
+        </p>
+
+        <div class="two-col">
+          <div>
+            <div class="pill">Personal Learning Journey</div>
+            <p>
+              My journey in Computer Science began with curiosity about how technology can turn abstract ideas into
+              interactive experiences. Over time, this curiosity evolved into a focused interest in
+              <strong>web development</strong> and <strong>artificial intelligence / machine learning</strong>.
+            </p>
+            <p>
+              As a second-year B.Tech CSE student, I learn best by breaking complex concepts into smaller parts
+              and then applying them through mini-projects, experiments, and practice problems. Mathematics,
+              logical reasoning, and problem-solving have always been my strengths, and I consciously use them
+              to approach new topics in programming and systems thinking.
+            </p>
+
+            <div class="pill">Core Values</div>
+            <p>
+              My academic work is guided by a few core values:
+            </p>
+            <ul>
+              <li><strong>Clarity:</strong> understanding “why” before “how”.</li>
+              <li><strong>Consistency:</strong> small focused effort every day rather than last-minute rush.</li>
+              <li><strong>Integrity:</strong> being honest in assessments, teamwork, and project work.</li>
+              <li><strong>Impact:</strong> preferring projects that solve a real problem, even in a small way.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="small-card">
+              <div class="small-card-title">Philosophy of Learning</div>
+              <p>
+                I see learning as a continuous loop:
+              </p>
+              <ul>
+                <li>Explore → Understand the theory and core ideas.</li>
+                <li>Apply → Implement a small project or solve problems.</li>
+                <li>Reflect → Note mistakes, gaps, and improvements.</li>
+                <li>Refine → Iterate with better structure or tools.</li>
+              </ul>
+              <p>
+                This cycle helps me connect courses like Data Structures, Operating Systems, and Web Technologies
+                with real-life use cases and interdisciplinary ideas.
+              </p>
+            </div>
+
+            <div class="small-card">
+              <div class="small-card-title">Interdisciplinary Mindset</div>
+              <p>
+                I enjoy bringing together <strong>math, logic, design, and communication</strong>. Whether it is
+                visualizing data, building a small web app, or explaining technical concepts to friends, I treat
+                learning as a combination of multiple disciplines instead of isolated subjects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== RESUME / CV (3 MARKS) ========== -->
+      <section id="resume">
+        <h2>Resume / CV</h2>
+        <p class="section-subtitle">
+          Snapshot of my education, experiences, skills, and co-curricular involvement.
+        </p>
+
+        <div class="badge">Education</div>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-role">B.Tech in Computer Science & Engineering</span>
+            <span class="resume-meta">[Your Institute Name] • 20XX – 20XX</span>
+          </div>
+          <p class="muted">
+            Key courses: Data Structures & Algorithms, Operating Systems, Database Management Systems,
+            Computer Networks, Web Technologies, Discrete Mathematics, Probability & Statistics,
+            Artificial Intelligence & Machine Learning (introductory).
+          </p>
+        </div>
+
+        <div class="resume-grid">
+          <!-- LEFT COLUMN -->
+          <div>
+            <div class="resume-block-title">Work Experience / Roles</div>
+
+            <div class="resume-item">
+              <div class="resume-item-header">
+                <span class="resume-role">Student Developer (Academic & Personal Projects)</span>
+                <span class="resume-meta">20XX – Present</span>
+              </div>
+              <p class="muted">
+                Developed small web applications and practice projects focused on problem-solving,
+                user experience, and learning new technologies step by step.
+              </p>
+              <ul>
+                <li>Built mini applications integrating HTML, CSS, JavaScript, and basic backend logic.</li>
+                <li>Collaborated with classmates on lab assignments and group projects.</li>
+                <li>Practised structured project documentation and clean code formatting.</li>
+              </ul>
+            </div>
+
+            <div class="resume-block-title">Areas of Interest & Specialization</div>
+            <ul>
+              <li>Full-stack Web Development (Frontend + Backend)</li>
+              <li>AI / Machine Learning fundamentals</li>
+              <li>Algorithms and problem-solving</li>
+              <li>Data-driven applications & dashboards</li>
+            </ul>
+
+            <div class="resume-block-title">Co-Curricular & Volunteer Experience</div>
+            <div class="resume-item">
+              <p class="muted">
+                Participated in coding contests, technical workshops, and hackathon-style events (college level).
+                Helped friends with programming labs, explaining core logic and debugging.
+              </p>
+              <ul>
+                <li>Group study sessions for DSA and operating systems.</li>
+                <li>Contribution to class presentations and seminar preparation.</li>
+                <li>Support roles in college events and departmental activities.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div>
+            <div class="resume-block-title">Technical Skills</div>
+            <div class="chip-row">
+              <span class="chip">C / C++ / Java (Basics to Intermediate)</span>
+              <span class="chip">Python (Basics)</span>
+              <span class="chip">HTML / CSS / JavaScript</span>
+              <span class="chip">Data Structures & Algorithms</span>
+              <span class="chip">Git & GitHub (Basic)</span>
+              <span class="chip">Database Concepts</span>
+            </div>
+
+            <div class="resume-block-title">Soft Skills</div>
+            <ul>
+              <li>Clear communication and explanation of concepts.</li>
+              <li>Teamwork and collaborative problem-solving.</li>
+              <li>Time management, especially around exams and projects.</li>
+              <li>Adaptability and willingness to learn new tools.</li>
+            </ul>
+
+            <div class="resume-block-title">Certifications & Professional Development</div>
+            <ul>
+              <li>[Replace] NPTEL / Online course in programming or web development.</li>
+              <li>[Replace] Online course / workshop attended (e.g., Git, AI basics, cloud).</li>
+              <li>Self-learning through YouTube playlists and documentation.</li>
+            </ul>
+
+            <div class="resume-block-title">Awards / Achievements / Hobbies</div>
+            <ul>
+              <li>[Add any academic achievement, rank, or recognition here.]</li>
+              <li>Hobbies: Problem-solving, tech content, reading about startups and products.</li>
+              <li>Exploring design ideas, UI inspiration, and productivity systems.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== INTERDISCIPLINARY PROJECTS & RESEARCH (4 MARKS) ========== -->
+      <section id="projects">
+        <h2>Interdisciplinary Projects & Research</h2>
+        <p class="section-subtitle">
+          Selected projects that combine multiple disciplines and demonstrate problem-solving, methodology, and reflection.
+        </p>
+
+        <div class="projects-grid">
+          <!-- PROJECT 1 -->
+          <article class="project-card">
+            <div class="project-label">Project 1</div>
+            <div class="project-title">Smart Study Planner – Web Application</div>
+            <div class="project-meta">Domains: Web Development, Productivity, Data Handling</div>
+            <p>
+              <strong>Objective:</strong> Build a web-based planner that helps students organise subjects, set goals,
+              and visualise progress using simple charts and reminders.
+            </p>
+            <div class="project-subtitle">Methodologies</div>
+            <ul>
+              <li>Used HTML, CSS, and JavaScript to design a responsive UI.</li>
+              <li>Applied basic data structures to manage tasks, priorities, and deadlines.</li>
+              <li>Integrated simple local storage for saving user data in the browser.</li>
+            </ul>
+
+            <div class="project-subtitle">Outcomes & Innovations</div>
+            <ul>
+              <li>Created a functional planner that supports subject-wise tracking and daily checklists.</li>
+              <li>Practised turning an abstract problem (time management) into a working interface.</li>
+            </ul>
+
+            <div class="project-subtitle">Challenges & Solutions</div>
+            <p class="muted">
+              Initially, the layout was cluttered and the logic for repeating tasks became confusing.
+              By redrawing wireframes on paper and using modular JavaScript functions, the UI became cleaner
+              and the code easier to debug and extend.
+            </p>
+
+            <div class="project-visual">
+              Placeholder for screenshots / UI mockups / GitHub link for the project.
+            </div>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article class="project-card">
+            <div class="project-label">Project 2</div>
+            <div class="project-title">College Event Feedback & Analytics Dashboard</div>
+            <div class="project-meta">Domains: Data Analysis, Visualization, Human-Computer Interaction</div>
+            <p>
+              <strong>Objective:</strong> Design a simple system where students can submit feedback for events
+              and organisers can see consolidated statistics.
+            </p>
+
+            <div class="project-subtitle">Methodologies</div>
+            <ul>
+              <li>Designed feedback forms and categories (content, organisation, speakers, etc.).</li>
+              <li>Used basic data analysis logic to compute averages and counts.</li>
+              <li>Visualised results using bar charts / summary cards in the frontend.</li>
+            </ul>
+
+            <div class="project-subtitle">Outcomes & Innovations</div>
+            <ul>
+              <li>Demonstrated how raw text and ratings can turn into actionable insights.</li>
+              <li>Practised thinking from both user side (students) and admin side (organisers).</li>
+            </ul>
+
+            <div class="project-subtitle">Challenges & Solutions</div>
+            <p class="muted">
+              The main challenge was designing a structure that stays simple but still useful.
+              Iterative feedback from friends helped refine questions and visual layouts.
+            </p>
+
+            <div class="project-visual">
+              Placeholder for dashboard screenshots / charts / system architecture sketch.
+            </div>
+          </article>
+        </div>
+
+        <div class="project-card" style="margin-top:14px;">
+          <div class="project-label">Reflection</div>
+          <p>
+            Across these projects, I learned how important it is to combine <strong>requirements understanding</strong>,
+            <strong>interface design</strong>, and <strong>technical implementation</strong>. Interdisciplinary thinking
+            helped me connect concepts from programming, human behaviour, and design. Breaking large problems into
+            modules and testing each part independently made debugging far easier.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========== ADVANCED SKILL DEVELOPMENT & MASTERY (3 MARKS) ========== -->
+      <section id="skills">
+        <h2>Advanced Skill Development & Mastery</h2>
+        <p class="section-subtitle">
+          Key technical, soft, and creative skills I am actively developing, with small artefacts or examples.
+        </p>
+
+        <div class="skills-grid">
+          <!-- SKILL 1 -->
+          <div class="skill-card">
+            <div class="skill-type">Technical Skill</div>
+            <div class="skill-name">Data Structures & Problem Solving</div>
+            <p class="skill-detail">
+              Practising arrays, linked lists, stacks, queues, recursion, and basic dynamic programming
+              through coding platforms and lab exercises.
+            </p>
+            <pre class="code-snippet">
+// Example: Find max element in an array
+int maxElement(int arr[], int n){
+    int mx = arr[0];
+    for(int i = 1; i < n; i++){
+        if(arr[i] > mx) mx = arr[i];
+    }
+    return mx;
+}
+            </pre>
+          </div>
+
+          <!-- SKILL 2 -->
+          <div class="skill-card">
+            <div class="skill-type">Technical Skill</div>
+            <div class="skill-name">Full-Stack Web Foundations</div>
+            <p class="skill-detail">
+              Comfortable with HTML, CSS, and JavaScript for building responsive pages.
+              Exploring basics of backend (Node / PHP) and databases.
+            </p>
+            <pre class="code-snippet">
+// Simple JS snippet: toggling a theme
+const body = document.body;
+function toggleTheme(){
+    body.classList.toggle("dark-theme");
+}
+            </pre>
+          </div>
+
+          <!-- SKILL 3 -->
+          <div class="skill-card">
+            <div class="skill-type">Soft Skill</div>
+            <div class="skill-name">Communication & Collaboration</div>
+            <p class="skill-detail">
+              I frequently discuss problems with classmates, explain concepts using examples, and help debug code.
+              This improves both my understanding and my ability to express technical ideas clearly.
+            </p>
+            <p class="muted">
+              Artefact: group lab work, project WhatsApp / Discord discussions, and presentation slides.
+            </p>
+          </div>
+
+          <!-- SKILL 4 -->
+          <div class="skill-card">
+            <div class="skill-type">Creative Competency</div>
+            <div class="skill-name">Design Thinking & UI Sense</div>
+            <p class="skill-detail">
+              While building web pages and small apps, I focus on clean layouts, readable text, and intuitive flows.
+              I try to keep interfaces minimal, with clear hierarchy and consistent colours.
+            </p>
+            <p class="muted">
+              Artefact: this digital portfolio’s structure and styling itself serves as a design sample.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== COLLABORATIVE & LEADERSHIP EXPERIENCES (2 MARKS) ========== -->
+      <section id="collab">
+        <h2>Collaborative & Leadership Experiences</h2>
+        <p class="section-subtitle">
+          Experiences where I worked with others, took responsibility, and contributed to team success.
+        </p>
+
+        <div class="small-card">
+          <div class="small-card-title">Team Roles & Responsibilities</div>
+          <p>
+            In lab projects and group assignments, I often take responsibility for:
+          </p>
+          <ul>
+            <li>Structuring tasks and splitting them among team members.</li>
+            <li>Coordinating code integration and version control using Git (basic).</li>
+            <li>Preparing or refining the final presentation / documentation.</li>
+          </ul>
+        </div>
+
+        <div class="small-card">
+          <div class="small-card-title">Team Dynamics & Conflict Resolution</div>
+          <p>
+            When differences appear (for example, about which tech stack to use or how to divide work),
+            I try to:
+          </p>
+          <ul>
+            <li>Listen to everyone’s point of view first.</li>
+            <li>Bring the focus back to project requirements and deadlines.</li>
+            <li>Suggest a compromise that balances learning and practicality.</li>
+          </ul>
+          <p class="muted">
+            This approach helps keep the atmosphere positive and productive, especially under time pressure.
+          </p>
+        </div>
+
+        <div class="small-card">
+          <div class="small-card-title">Achievements & Contributions</div>
+          <p>
+            Through teamwork, we have successfully completed several lab mini-projects and course assignments
+            on time, often with clean presentation and clear logic. My main contribution is usually in:
+          </p>
+          <ul>
+            <li>Structuring the logic of the solution.</li>
+            <li>Ensuring code is readable and well-commented.</li>
+            <li>Presenting the idea clearly to faculty or peers.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ========== GLOBAL AWARENESS & ETHICAL CONSIDERATIONS (2 MARKS) ========== -->
+      <section id="ethics">
+        <h2>Global Awareness & Ethical Considerations</h2>
+        <p class="section-subtitle">
+          How global issues and ethics influence my thinking about technology, projects, and career.
+        </p>
+
+        <div class="two-col">
+          <div>
+            <div class="pill">Case Study: Data Privacy in Web Applications</div>
+            <p>
+              While learning web development and databases, one major concern is how user data is stored
+              and used. Globally, there are increasing discussions about <strong>data privacy</strong>,
+              <strong>surveillance</strong>, and <strong>user consent</strong>.
+            </p>
+            <p>
+              Even in small student projects, I try to think about:
+            </p>
+            <ul>
+              <li>Collecting only the minimum required data.</li>
+              <li>Being transparent about why data is taken.</li>
+              <li>Avoiding the use of real personal data when testing or demonstrating.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="small-card">
+              <div class="small-card-title">Ethical Reflections</div>
+              <p>
+                Technology can easily amplify both positive and negative effects. As a future engineer, my goals are:
+              </p>
+              <ul>
+                <li>To build systems that are fair and accessible.</li>
+                <li>To avoid plagiarism and respect intellectual property.</li>
+                <li>To be transparent about the limitations of any solution I create.</li>
+              </ul>
+              <p class="muted">
+                This mindset influences how I document my work, credit sources, and handle collaborative tasks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== FUTURE ASPIRATIONS & PROFESSIONAL DEVELOPMENT (2 MARKS) ========== -->
+      <section id="future">
+        <h2>Future Aspirations & Professional Development</h2>
+        <p class="section-subtitle">
+          Where I want to go next, and how I plan to keep growing as a learner and professional.
+        </p>
+
+        <div class="two-col">
+          <div>
+            <div class="badge">Short-Term Goals (Next 1–2 Years)</div>
+            <ul>
+              <li>Strengthen core topics: DSA, OS, DBMS, Computer Networks.</li>
+              <li>Build 3–5 solid web projects (full-stack) that solve real problems.</li>
+              <li>Gain comfort with at least one backend framework and database stack.</li>
+              <li>Explore AI/ML basics and integrate a simple ML feature into a project.</li>
+            </ul>
+
+            <div class="badge">Long-Term Vision</div>
+            <ul>
+              <li>Work in a high-impact tech role (startup or product-based company).</li>
+              <li>Contribute to scalable systems that combine data, AI, and user-friendly design.</li>
+              <li>Eventually move into roles that combine technical leadership with decision-making.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="small-card">
+              <div class="small-card-title">Continuous Improvement Strategy</div>
+              <p>
+                To support these goals, I plan to:
+              </p>
+              <ul>
+                <li>Maintain a consistent daily or weekly coding schedule.</li>
+                <li>Document my learning in digital notes or blog-style entries.</li>
+                <li>Participate in online communities, contests, and projects.</li>
+                <li>Update this portfolio regularly as I complete new work.</li>
+              </ul>
+              <p class="muted">
+                This portfolio is not a one-time assignment, but a living document of my growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CONCLUSION & SELF-ASSESSMENT + SWOT (2 MARKS) ========== -->
+      <section id="conclusion">
+        <h2>Conclusion & Self-Assessment</h2>
+        <p class="section-subtitle">
+          Summary of what I have learned, how I evaluate myself, and where I still want to improve.
+        </p>
+
+        <p>
+          This portfolio represents the current stage of my academic journey in Computer Science.
+          I have built a foundation in programming, web development, and problem-solving, and have
+          started connecting them through small but meaningful projects.
+        </p>
+
+        <p>
+          I see myself as a learner who is disciplined, curious, and willing to put in the work over time.
+          At the same time, I recognise that there is a long way to go in terms of depth, real-world exposure,
+          and advanced problem-solving.
+        </p>
+
+        <div class="badge">Self-Evaluation</div>
+        <ul>
+          <li>I meet most of the initial goals I set for understanding core subjects.</li>
+          <li>I need to increase the number of complete, polished projects in my portfolio.</li>
+          <li>I am improving my ability to explain ideas and work in teams.</li>
+        </ul>
+
+        <div class="badge">SWOT Analysis</div>
+        <div class="swot-grid">
+          <div class="swot-card">
+            <div class="swot-title">Strengths</div>
+            <ul>
+              <li>Strong interest in problem-solving and logic.</li>
+              <li>Consistency and willingness to practise.</li>
+              <li>Good communication and explanation skills.</li>
+            </ul>
+          </div>
+          <div class="swot-card">
+            <div class="swot-title">Weaknesses</div>
+            <ul>
+              <li>Tendency to overthink and delay starting big projects.</li>
+              <li>Still building confidence with advanced topics.</li>
+              <li>Need to improve speed in solving problems under time pressure.</li>
+            </ul>
+          </div>
+          <div class="swot-card">
+            <div class="swot-title">Opportunities</div>
+            <ul>
+              <li>Growing demand for skilled web developers and AI engineers.</li>
+              <li>Access to online resources, courses, and communities.</li>
+              <li>Chance to take internships and real projects in coming semesters.</li>
+            </ul>
+          </div>
+          <div class="swot-card">
+            <div class="swot-title">Threats</div>
+            <ul>
+              <li>Fast-changing technology requiring continuous upskilling.</li>
+              <li>High competition in both placements and internships.</li>
+              <li>Risk of distraction and inconsistency without discipline.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== TESTIMONIALS (1 MARK) ========== -->
+      <section id="testimonials">
+        <h2>Testimonials</h2>
+        <p class="section-subtitle">
+          Feedback and recommendations from mentors or faculty members.
+        </p>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-name">[Faculty Name]</div>
+            <div class="testimonial-role">Faculty, [Department / Course]</div>
+            <blockquote>
+              “Shubham is consistent, reflective, and willing to put in the effort required to
+              understand concepts deeply, not just for exams.”
+            </blockquote>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-name">[Mentor / Senior Name]</div>
+            <div class="testimonial-role">Mentor / Senior, [Club / Context]</div>
+            <blockquote>
+              “He shows good potential in problem-solving and quickly adapts to new tools and technologies.
+              His collaborative attitude makes him a reliable teammate.”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Shubham Kumar • Academic Portfolio • [Your Institute Name] • [Year]
+      </footer>
+    </div>
+  </main>
+
+  <!-- ================== PURE JAVASCRIPT ================== -->
+  <script>
+    // Auto-fill submission date (you can also manually replace text in HTML)
+    (function () {
+      const el = document.getElementById("submissionDate");
+      if (!el) return;
+      const d = new Date();
+      const options = { day: "2-digit", month: "long", year: "numeric" };
+      el.textContent = d.toLocaleDateString("en-IN", options);
+    })();
+
+    // Highlight active TOC and nav links while scrolling
+    const sectionIds = [
+      "intro","resume","projects","skills","collab","ethics","future","conclusion","testimonials"
+    ];
+
+    const sectionMap = {};
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionMap[id] = el;
+    });
+
+    const navLinks = document.querySelectorAll(".nav-link");
+    const tocLinks = document.querySelectorAll(".toc-list a");
+
+    function updateActiveLinks() {
+      let currentId = null;
+      const scrollPos = window.scrollY + 140; // offset for navbar
+      for (const id of sectionIds) {
+        const sec = sectionMap[id];
+        if (!sec) continue;
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = id;
+          break;
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.classList.toggle("active-nav", currentId && link.getAttribute("href") === "#" + currentId);
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle("toc-active", currentId && link.getAttribute("href") === "#" + currentId);
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveLinks);
+    window.addEventListener("load", updateActiveLinks);
+  </script>
+</body>
+</html>
